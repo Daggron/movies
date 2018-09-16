@@ -5,19 +5,31 @@
     <title>Details</title>
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'movies/style.css' %}">
+
 </head>
 <body>
+
  <img src="{{ movies.movie_poster }}" alt="{{ movies.movie_title}}Poster" height="250px" width=auto>
-<ul>
-
-    <li><h2>Movie:{{movies.movie_title }}</h2></li>
-    <li><h2>Cast:{{ movies.movie_cast }}</h2></li>
-    <li><h2>Genre:{{ movies.movie_genre}}</h2></li>
-    <li><h2>Songs:
+ {% if error_message %}
+  <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+ <h2>Movie:{{ movies.movie_title }}</h2>
+ <h2>Cast:{{ movies.movie_cast }}</h2>
+ <h2>Genre:{{ movies.movie_genre }}</h2>
+ <h2>Songs:</h2>
+<form action="{% url 'movie:favourite' movies.id %}" method="post">
+    {% csrf_token %}
     {% for song in movies.songs_set.all %}
-        {{song.song_title}}</h2></li>
-    {% endfor %}
-</ul>
+        <input type="checkbox" id="song{{ forloop.counter }}" name="song" value="{{ song.id }}">
+        <label for="song{{ forloop.counter }}">
+        {{ song.song_title }}
+        {% if song.is_favourite %}
+        <img src="{% static 'movies/img/star.png' %}" alt="favourite Song" height="20px">
+        {% endif %}
+        </label><br>
 
+    {% endfor %}
+<input type="submit" value="Add Favourite">
+</form>
 </body>
 </html>
