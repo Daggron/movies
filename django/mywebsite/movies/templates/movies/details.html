@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'movies/style.css' %}">
+</head>
+<body>
+ <img src="{{ movies.movie_poster }}" alt="{{ movies.movie_title}}Poster" height="250px" width=auto>
+<ul>
+
+    <li><h2>Movie:{{movies.movie_title }}</h2></li>
+    <li><h2>Cast:{{ movies.movie_cast }}</h2></li>
+    <li><h2>Genre:{{ movies.movie_genre}}</h2></li>
+    <li><h2>Songs:
+    {% for song in movies.songs_set.all %}
+        {{song.song_title}}</h2></li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
