@@ -1,18 +1,26 @@
+{% extends 'movies/basefile.html' %}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Movies Page</title>
+    <link rel="stylesheet" href="{% static 'movies/style.css' %}">
 </head>
 <body>
-
+{% block body %}
     <h2>Hello User Welcome To Rotten Tomatoes</h2>
-    <ul>
-        {% for movie in movies %}
-        <li>
-          <a href="{% url 'movie:detail' movie.id %} ">{{movie.movie_title}}</a>
-        </li>
+    <div id="container">
+    <div id="box">
+        {% for movie in all_movies %}
+            <div class="inside-box">
+            <a href="{% url 'movie:detail' movie.id %} ">
+            <img src="{{ movie.movie_poster }}" height="250px" width="auto">
+                <h2>{{movie.movie_title}}</h2></a>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
+    </div>
+{% endblock %}
 </body>
 </html>

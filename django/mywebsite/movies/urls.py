@@ -2,7 +2,7 @@ from django.conf.urls import url
 from .import views
 app_name='movie'
 urlpatterns=[
-    url(r'^$',views.index,name='index'),
-    url(r'^(?P<movie_id>[0-9])/$', views.details, name='detail'),
-    url(r'^(?P<movie_id>[0-9])/favourite/$', views.favourite, name='favourite'),
+    url(r'^$',views.IndexView.as_view(),name='index'),
+    url(r'^(?P<pk>[0-9])/$', views.DetailsView.as_view(), name='detail'),
+    url(r'movies/add/$', views.add_Movies.as_view(), name='moviesadd'),
 ]
