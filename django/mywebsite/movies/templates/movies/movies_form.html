@@ -1,0 +1,7 @@
+{% block  body %}
+    <form method="post"  action="" enctype="multipart/form-data">
+     {% csrf_token %}
+    {% include 'movies/form-template.html' %}
+    <button type="submit"  class="btn btn-success">Add</button>
+    </form>
+{% endblock %}

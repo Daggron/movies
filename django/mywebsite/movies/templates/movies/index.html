@@ -10,6 +10,7 @@
 <body>
 {% block body %}
     <h2>Hello User Welcome To Rotten Tomatoes</h2>
+    <a href="{% url 'movie:movies_add' %}">Add</a>
     <div id="container">
     <div id="box">
         {% for movie in all_movies %}
@@ -18,6 +19,11 @@
             <img src="{{ movie.movie_poster }}" height="250px" width="auto">
                 <h2>{{movie.movie_title}}</h2></a>
             </div>
+           <form  action="{% url 'movie:movies_del' movie.id %}"  method="post">
+           {% csrf_token %}
+               <input type="hidden" name="movie_id" value="{{ movie_id }}">
+           <input type="submit"  value="DELETE">
+           </form>
         {% endfor %}
     </div>
     </div>
