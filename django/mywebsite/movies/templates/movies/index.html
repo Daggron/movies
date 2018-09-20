@@ -16,7 +16,7 @@
         {% for movie in all_movies %}
             <div class="inside-box">
             <a href="{% url 'movie:detail' movie.id %} ">
-            <img src="{{ movie.movie_poster }}" height="250px" width="auto">
+            <img src="{{ movie.movie_poster.url }}" height="250px" width="auto">
                 <h2>{{movie.movie_title}}</h2></a>
             </div>
            <form  action="{% url 'movie:movies_del' movie.id %}"  method="post">

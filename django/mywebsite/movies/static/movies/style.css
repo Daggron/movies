@@ -3,11 +3,11 @@ body{
     color: white;
 }
 img{
-    height: 400px!important;
-    width: 300px!important;
+    height: 200px!important;
+    width: auto;
 }
 .images{
-    width:200px;
+    height: 200px;
 }
 button #btn-danger{
     background: brown;
