@@ -4,10 +4,12 @@ body{
 }
 img{
     height: 200px!important;
+     border: 2px solid yellow!important;
     width: auto;
 }
 .images{
     height: 200px;
+
 }
 button #btn-danger{
     background: brown;
